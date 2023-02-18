@@ -34,9 +34,12 @@
                   >Home</a
                 >
               </li>
+              
+              {{#if logged_in}}
               <li class="nav-item">
                 <a class="nav-link" href="./Dashboard.html">Dashboard</a>
               </li>
+              {{/if}}
 
               {{#if logged_in}}
               <li class="nav-item">
