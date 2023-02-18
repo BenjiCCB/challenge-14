@@ -27,6 +27,12 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/create-post', withAuth, async (req, res) => {
+
+  res.render('create-post');
+
+});
+
 router.get('/project/:id', async (req, res) => {
   try {
     const projectData = await Project.findByPk(req.params.id, {
