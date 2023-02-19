@@ -16,10 +16,12 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+// update post
 router.put('/:id', withAuth, async (req, res) => {
   
+  console.log("here")
   try {
-    const dish = await Dish.update(
+    const post = await Post.update(
       {
         title: req.body.title,
         body: req.body.body,
@@ -31,8 +33,7 @@ router.put('/:id', withAuth, async (req, res) => {
       }
     );
 
-    // res.redirect('/dashboard');
-    res.status(200).json(newPost);
+    res.status(200).json(post);
   } catch (err) {
     res.status(400).json(err);
   }
