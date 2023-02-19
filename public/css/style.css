@@ -17,7 +17,7 @@ header, .project:not(:last-child) {
   text-decoration: underline;
 }
 
-/* new css */
+/* New CSS */
 .bg-custom-primary {
   background-color: #e0ecd4;
 }
@@ -83,11 +83,7 @@ ul li a {
   margin-top: -10px;
 }
 #signup {
-  color: #483ae7;
+  color: #9c8c94;
   text-decoration: none;
   font-size: 1.2rem;
 }
-
-/* .post-body-text{
-  height: 500px
-} */

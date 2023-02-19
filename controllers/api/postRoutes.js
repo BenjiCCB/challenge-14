@@ -9,6 +9,29 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
+    // res.redirect('/dashboard');
+    res.status(200).json(newPost);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.put('/:id', withAuth, async (req, res) => {
+  
+  try {
+    const dish = await Dish.update(
+      {
+        title: req.body.title,
+        body: req.body.body,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+
+    // res.redirect('/dashboard');
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);

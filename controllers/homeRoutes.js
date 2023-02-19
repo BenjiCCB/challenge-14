@@ -31,6 +31,28 @@ router.get('/create-post', withAuth, async (req, res) => {
   res.render('post-create', {logged_in: req.session.logged_in});
 });
 
+router.get('/update-post/:id', withAuth, async (req, res) => {
+
+  const postData = await Post.findByPk(req.params.id, {
+    include: [
+      {
+        model: User,
+        attributes: ['username'],
+      },
+    ],
+  });
+
+  const post = postData.get({ plain: true });
+
+  res.render('post-update', {
+    ...post,
+    username: req.session.username,
+    logged_in: req.session.logged_in
+  });
+
+});
+
+
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
