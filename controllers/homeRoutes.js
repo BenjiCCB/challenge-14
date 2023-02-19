@@ -28,8 +28,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/create-post', withAuth, async (req, res) => {
-  res.render('create-post', {logged_in: req.session.logged_in});
-
+  res.render('post-create', {logged_in: req.session.logged_in});
 });
 
 router.get('/post/:id', async (req, res) => {
@@ -47,7 +46,7 @@ router.get('/post/:id', async (req, res) => {
 
     const isAuthor = (post.user.username == req.session.username)
 
-    res.render('post', {
+    res.render('post-display', {
       ...post,
       isAuthor,
       username: req.session.username,
@@ -84,7 +83,7 @@ router.get('/login', (req, res) => {
     res.redirect('/dashboard');
     return;
   }
-  res.render('login');
+  res.render('user-login');
 });
 
 router.get('/signup', (req, res) => {
@@ -94,7 +93,7 @@ router.get('/signup', (req, res) => {
     return;
   }
 
-  res.render('signup');
+  res.render('user-signup');
 });
 
 module.exports = router;

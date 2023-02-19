@@ -1,5 +1,6 @@
 const deletePostHandler = async (event) => {
-  
+  event.preventDefault();
+
   console.log("im here")
   
   if (event.target.hasAttribute('data-id')) {
