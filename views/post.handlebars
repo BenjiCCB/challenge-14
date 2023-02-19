@@ -1,8 +1,15 @@
 {{> post-box}}
 
 
-<h1>{{user.username}}</h1>
 
+
+{{!-- <h1>logged in: {{username}}</h1>
+
+<h1>author: {{user.username}}</h1> --}}
+
+ {{#if isAuthor}}
+ <H1>it's a match</H1>
+{{/if}}
 
 {{!-- <div class="text-center">
   <h2>{{name}}</h2>

@@ -45,11 +45,12 @@ router.get('/post/:id', async (req, res) => {
 
     const post = postData.get({ plain: true });
 
-    console.log(post)
-    console.log(req.session)
+    const isAuthor = (post.user.username == req.session.username)
 
     res.render('post', {
       ...post,
+      isAuthor,
+      username: req.session.username,
       logged_in: req.session.logged_in
     });
   } catch (err) {
