@@ -25,6 +25,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+// render dashboard
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('dashboard', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// render create form
 router.get('/create-post', withAuth, async (req, res) => {
   res.render('post-create', {logged_in: req.session.logged_in});
 });
@@ -72,25 +92,6 @@ router.get('/post/:id', async (req, res) => {
       isAuthor,
       username: req.session.username,
       logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// render dashboard
-router.get('/dashboard', withAuth, async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Post }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    res.render('dashboard', {
-      ...user,
-      logged_in: true
     });
   } catch (err) {
     res.status(500).json(err);

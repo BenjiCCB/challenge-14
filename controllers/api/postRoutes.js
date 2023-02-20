@@ -10,6 +10,7 @@ router.post('/', withAuth, async (req, res) => {
     });
 
     // res.redirect('/dashboard');
+    alert("new post created")
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);
@@ -19,7 +20,6 @@ router.post('/', withAuth, async (req, res) => {
 // update post
 router.put('/:id', withAuth, async (req, res) => {
   
-  console.log("here")
   try {
     const post = await Post.update(
       {
