@@ -11,12 +11,16 @@
                         <input type="text" value="{{title}}" class="w-100 py-1 form-control post-tile" id="post-title" name="post-title" placeholder="Object-Relational Mapping"
                         />
                     </div>
-                    <div>
-                        <label for="" class="d-block"> Body </label>
-                        <input type="text"
-                            class="w-100 py-1 form-control post-body post-body-text" value="{{body}}" id="post-body" name="post-body" placeholder="I have really loved learning about ORM's. It's really simplified the way I create queries! "
-                        />
-                    </div>
+
+                    <label for="" class="d-block"> Body </label>
+                    <textarea
+                        class="form-control"
+                        id="post-body"
+                        name="post-body"
+                        rows="3"
+                        placeholder="I have really loved learning about ORM's. It's really simplified the way I create queries! "
+                    >{{body}}</textarea>
+
                     <div class="py-3">
                         <button type="submit" class="btn btn-secondary w-100">Update</button>
                     </div>

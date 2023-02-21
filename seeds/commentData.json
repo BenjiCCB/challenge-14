@@ -1,16 +1,16 @@
   [
     {
-      "comment_text": "I'm a comment",
+      "comment_text": "I completely disagree with everything said here",
       "user_id": "1",
       "post_id": "1"
     },
     {
-      "comment_text": "I'm a comment2",
+      "comment_text": "This is a very interesting article!",
       "user_id": "2",
       "post_id": "1"
     },
     {
-      "comment_text": "I'm a comment3",
+      "comment_text": "Wow, never knew this existed...",
       "user_id": "1",
       "post_id": "3"
     }

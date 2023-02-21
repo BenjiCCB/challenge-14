@@ -15,18 +15,22 @@
     <div class="px-3">
         <div >
             <label for="comment-prompt">
-            <h4>Comment here:</h4>
+                <h4>Comment here:</h4>
             </label>
-            <div style="position: relative;">
-                <input type="text"  id="comment-text" class="form-input w-100 py-1 form-control" />
-            </div>
+            <textarea
+                class="form-control"
+                id="comment-text"
+                name="comment-text"
+                rows="3"
+                placeholder="Add your comment here"
+            ></textarea>
         </div>
 
         <div class="my-4">
             <button type= "submit" class="btn btn-secondary w-100 ">Submit</button>
         </div> 
     </div>
-    </form>
+</form>
 
 <script src="/js/comment-create.js"></script>
 

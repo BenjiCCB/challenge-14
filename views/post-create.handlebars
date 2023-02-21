@@ -8,15 +8,18 @@
                 <div class="px-3">
                     <div class="py-3">
                         <label for="" class="d-block"> Title </label>
-                        <input type="text" class="w-100 py-1 form-control post-tile" id="post-title" name="post-title" placeholder="Object-Relational Mapping"
+                        <input type="text" class="w-100 py-1 form-control post-tile" id="post-title" name="post-title" placeholder="Give your post a title"
                         />
                     </div>
-                    <div>
-                        <label for="" class="d-block"> Body </label>
-                        <input type="text"
-                            class="w-100 py-1 form-control post-body post-body-text" id="post-body" name="post-body" placeholder="I have really loved learning about ORM's. It's really simplified the way I create queries! "
-                        />
-                    </div>
+                    <label for="" class="d-block"> Body </label>
+                    <textarea
+                        class="form-control"
+                        id="post-body"
+                        name="post-body"
+                        rows="3"
+                        placeholder="Add your post text here"
+                    ></textarea>
+                    
                     <div class="py-3">
                         <button type="submit" class="btn btn-secondary w-100">Create</button>
                     </div>
