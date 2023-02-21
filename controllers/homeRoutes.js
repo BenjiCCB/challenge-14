@@ -16,6 +16,13 @@ router.get('/', async (req, res) => {
   
     const posts = postData.map((post) => post.get({ plain: true }));
 
+    // truncate long posts
+    for (let i = 0; i < posts.length; i++) { 
+      if (posts[i].body.length > 1200){
+        posts[i].body = posts[i].body.substring(0, 1200) + '(... click title to view more)'
+      }
+    }
+
     res.render('homepage', { 
       posts, 
       logged_in: req.session.logged_in 
@@ -39,6 +46,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
+
+    for (let i = 0; i < user.posts.length; i++) { 
+      if (user.posts[i].body.length > 1200){
+      user.posts[i].body = user.posts[i].body.substring(0, 1200) + '( ...click title to view more)'
+      }
+    }
 
     res.render('dashboard', {
       ...user,
