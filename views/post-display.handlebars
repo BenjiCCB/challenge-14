@@ -1,5 +1,40 @@
+{{!-- main --}}
 {{> post-box}}
 
+{{!-- comments --}}
+{{#if comments}}
+    <h4 class="comments-label">Comments:</h4>
+    {{#each comments as |comment|}}
+    {{> comment}}
+    {{/each}}
+{{/if}}
+
+{{!-- comment submit form --}}
+{{#if logged_in}}
+<form class="form comment-form">
+    <div class="px-3">
+        <div >
+            <label for="comment-prompt">
+            <h4>Comment here:</h4>
+            </label>
+            <div style="position: relative;">
+                <input type="text"  id="comment-text" class="form-input w-100 py-1 form-control" />
+            </div>
+        </div>
+
+        <div class="my-4">
+            <button type= "submit" class="btn btn-secondary w-100 ">Submit</button>
+        </div> 
+    </div>
+    </form>
+
+<script src="/js/comment-create.js"></script>
+
+{{else }}
+    <a href="/login"><h5 class="post-login-prompt">Login or signup to comment</h5></a>
+{{/if}}
+
+{{!-- edit and delete buttons for logged in author --}}
 {{#if isAuthor}}
 <div class="text-center my-2">
     <a href="/update-post/{{id}}">

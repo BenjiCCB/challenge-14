@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // render homepage
@@ -30,7 +30,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Post }],
+      include: [
+        {
+          model: Post,
+          include: [User]
+        },
+      ],
     });
 
     const user = userData.get({ plain: true });
@@ -80,15 +85,24 @@ router.get('/post/:id', async (req, res) => {
           model: User,
           attributes: ['username'],
         },
+        {
+          model: Comment,
+          // attributes: ['comment_text'],
+          include: [User]
+        },
       ],
     });
 
     const post = postData.get({ plain: true });
+    const comments = post.comments
+
+    // console.log(post.comments)
 
     const isAuthor = (post.user.username == req.session.username)
 
     res.render('post-display', {
       ...post,
+      comments,
       isAuthor,
       username: req.session.username,
       logged_in: req.session.logged_in
@@ -97,6 +111,21 @@ router.get('/post/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.post('/comment-create', withAuth, async (req, res) => {
+  try {
+    const newComment = await Comment.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+    
+    res.status(200).json(newComment);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
 
 // manage login
 router.get('/login', (req, res) => {

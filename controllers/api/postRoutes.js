@@ -10,7 +10,6 @@ router.post('/', withAuth, async (req, res) => {
     });
 
     // res.redirect('/dashboard');
-    alert("new post created")
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);

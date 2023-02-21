@@ -17,6 +17,18 @@ header, .project:not(:last-child) {
   text-decoration: underline;
 }
 
+.comment-header{
+  background-color: #065b83 !important;
+}
+
+.comments-label{
+ margin-left: 15px; 
+}
+
+.post-login-prompt{
+  margin-left: 15px;
+}
+
 /* New CSS */
 .bg-custom-primary {
   background-color: #e0ecd4;
