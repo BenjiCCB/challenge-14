@@ -8,7 +8,7 @@ View more info below, as well as links to the github repo and heroku deployment,
 
 Github: [link here](https://github.com/BenjiCCB/challenge-14)
 
-Heroku: [link here](https://monosnap.com/file/s6M3lDwzyICsd2cmX8caxKlqcx1gZx)
+Heroku: [link here](arcane-taiga-18371.herokuapp.com)
 
 ![screenshot](./public/screenshots/appshot1.png)
 
