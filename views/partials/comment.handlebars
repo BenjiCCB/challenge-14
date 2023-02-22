@@ -4,8 +4,13 @@
         style="flex-wrap: wrap">
 
         <p class="text-brownish">Comment by {{user.username}} on {{format_date date_created}}</p>
+        {{#if deletable}}
+            <a href="#"><h6 id="comment-delete" data-id="{{id}}" class="text-brownish">Delete comment</h6></a>
+            <script src="/js/comment-delete.js"></script>
+        {{/if}}
     </div>
     <p class="px-3 py-2">
         {{comment_text}}
     </p>
+ 
 </div>

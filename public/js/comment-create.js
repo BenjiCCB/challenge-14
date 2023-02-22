@@ -7,7 +7,6 @@ const newCommentHandler = async (event) => {
         window.location.toString().split('/').length - 1
       ];
 
-
     if (comment_text && post_id) {
       const response = await fetch(`/comment-create`, {
         method: 'POST',
@@ -18,7 +17,6 @@ const newCommentHandler = async (event) => {
       });
   
       if (response.ok) {
-        // alert('New comment created!');
         document.location.reload();
       } else {
         alert('Failed to create comment');

@@ -73,8 +73,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
       }
     }
 
-    console.log(user)
-
     res.render('dashboard', {
       ...user,
       logged_in: true
@@ -138,6 +136,11 @@ router.get('/post/:id', async (req, res) => {
       }
 
     const comments = post.comments
+    for (let k = 0; k < comments.length; k++) {
+      if(comments[k].user.username == req.session.username){
+        comments[k].deletable = "true";
+      }
+    }
 
     const isAuthor = (post.user.username == req.session.username)
 
@@ -153,6 +156,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
+// create comment
 router.post('/comment-create', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
@@ -166,7 +170,25 @@ router.post('/comment-create', withAuth, async (req, res) => {
   }
 });
 
+// delete comment
+router.delete('/delete-comment/:id', withAuth, async (req, res) => {
+  try {
+    const commentData = await Comment.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
 
+    if (!commentData) {
+      res.status(404).json({ message: 'No comment found with this id!' });
+      return;
+    }
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // manage login
 router.get('/login', (req, res) => {
