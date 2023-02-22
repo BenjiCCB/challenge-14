@@ -57,6 +57,7 @@ The app provides a full-stack application designed to let users signup and login
 * Add comments to posts (when logged in)
 * Update or delete posts (when logged in and post author)
 
+* _\*Bonus features\* include: comment deletion, support for paragraph text_
 ---
 
 ## App License 
