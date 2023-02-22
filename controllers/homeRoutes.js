@@ -11,6 +11,9 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['username'],
         },
+        {
+          model: Comment,
+        },
       ],
     });
   
@@ -23,6 +26,7 @@ router.get('/', async (req, res) => {
       }
     }
 
+    // display paragraphs text
     for (let i = 0; i < posts.length; i++) { 
       let postParasArray = posts[i].body.split("\n")
       for (let j = 0; j < postParasArray.length; j++) {
@@ -32,7 +36,7 @@ router.get('/', async (req, res) => {
       posts[i].body = postParasArray
       }
     }
-
+    
     res.render('homepage', { 
       posts, 
       logged_in: req.session.logged_in 
@@ -50,7 +54,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       include: [
         {
           model: Post,
-          include: [User]
+          include: [User, Comment]
         },
       ],
     });
