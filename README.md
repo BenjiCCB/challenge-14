@@ -8,7 +8,7 @@ View more info below, as well as links to the github repo and heroku deployment,
 
 Github: [link here](https://github.com/BenjiCCB/challenge-14)
 
-Heroku link: [link here](https://monosnap.com/file/s6M3lDwzyICsd2cmX8caxKlqcx1gZx)
+Heroku: [link here](https://monosnap.com/file/s6M3lDwzyICsd2cmX8caxKlqcx1gZx)
 
 ![screenshot](./public/screenshots/appshot1.png)
 
@@ -57,7 +57,7 @@ The app provides a full-stack application designed to let users signup and login
 * Add comments to posts (when logged in)
 * Update or delete posts (when logged in and post author)
 
-* _\*Bonus features\* include: comment deletion, support for paragraph text_
+* _\*Bonus features\*: comment deletion, support for paragraph text_
 ---
 
 ## App License 
