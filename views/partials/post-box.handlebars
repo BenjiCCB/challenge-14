@@ -6,7 +6,10 @@
         <a href="/post/{{id}}"><h6 class="text-brownish">{{title}}</h6></a>
         <p class="text-brownish">Posted by {{user.username}} on {{format_date date_created}}</p>
     </div>
-    <p class="px-3 py-2">
-        {{body}}
+    <p>
+        {{!-- {{body}} --}}
+        {{#each body }}
+            <p class="para-text">{{this}}</p>
+        {{/each}}
     </p>
 </div>

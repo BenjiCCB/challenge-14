@@ -36,6 +36,11 @@ header, .project:not(:last-child) {
   margin-bottom: 20px;
 }
 
+.para-text{
+  margin-left: 15px;
+  margin-top: 0px;
+}
+
 /* New CSS */
 .bg-custom-primary {
   background-color: #e0ecd4;

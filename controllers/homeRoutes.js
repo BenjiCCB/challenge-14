@@ -16,10 +16,20 @@ router.get('/', async (req, res) => {
   
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    // truncate long posts
+    // limit chars for preview
     for (let i = 0; i < posts.length; i++) { 
-      if (posts[i].body.length > 1200){
-        posts[i].body = posts[i].body.substring(0, 1200) + '(... click title to view more)'
+      if (posts[i].body.length > 2000){
+        posts[i].body = posts[i].body.substring(0, 2000) + '( ...click title to view more)'
+      }
+    }
+
+    for (let i = 0; i < posts.length; i++) { 
+      let postParasArray = posts[i].body.split("\n")
+      for (let j = 0; j < postParasArray.length; j++) {
+        if (postParasArray[j] == ""){
+          postParasArray.splice(j, 1)
+        }
+      posts[i].body = postParasArray
       }
     }
 
@@ -48,10 +58,22 @@ router.get('/dashboard', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     for (let i = 0; i < user.posts.length; i++) { 
-      if (user.posts[i].body.length > 1200){
-      user.posts[i].body = user.posts[i].body.substring(0, 1200) + '( ...click title to view more)'
+      if (user.posts[i].body.length > 2000){
+        user.posts[i].body = user.posts[i].body.substring(0, 2000) + '( ...click title to view more)'
       }
     }
+
+    for (let i = 0; i < user.posts.length; i++) { 
+      let postParasArray = user.posts[i].body.split("\n")
+      for (let j = 0; j < postParasArray.length; j++) {
+        if (postParasArray[j] == ""){
+          postParasArray.splice(j, 1)
+        }
+      user.posts[i].body = postParasArray
+      }
+    }
+
+    console.log(user)
 
     res.render('dashboard', {
       ...user,
@@ -100,16 +122,22 @@ router.get('/post/:id', async (req, res) => {
         },
         {
           model: Comment,
-          // attributes: ['comment_text'],
           include: [User]
         },
       ],
     });
 
     const post = postData.get({ plain: true });
-    const comments = post.comments
 
-    // console.log(post.comments)
+      let postParasArray = post.body.split("\n")
+      for (let j = 0; j < postParasArray.length; j++) {
+        if (postParasArray[j] == ""){
+          postParasArray.splice(j, 1)
+        }
+        post.body = postParasArray
+      }
+
+    const comments = post.comments
 
     const isAuthor = (post.user.username == req.session.username)
 
