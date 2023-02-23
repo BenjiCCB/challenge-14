@@ -37,6 +37,7 @@ router.get('/', async (req, res) => {
       }
     }
     
+    // render page
     res.render('homepage', { 
       posts, 
       logged_in: req.session.logged_in 
@@ -61,12 +62,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
+    // limit chars for preview
     for (let i = 0; i < user.posts.length; i++) { 
       if (user.posts[i].body.length > 2000){
         user.posts[i].body = user.posts[i].body.substring(0, 2000) + '( ...click title to view more)'
       }
     }
 
+     // display paragraphs text
     for (let i = 0; i < user.posts.length; i++) { 
       let postParasArray = user.posts[i].body.split("\n")
       for (let j = 0; j < postParasArray.length; j++) {
@@ -77,6 +80,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       }
     }
 
+    // render page
     res.render('dashboard', {
       ...user,
       logged_in: true
@@ -131,14 +135,16 @@ router.get('/post/:id', async (req, res) => {
 
     const post = postData.get({ plain: true });
 
-      let postParasArray = post.body.split("\n")
-      for (let j = 0; j < postParasArray.length; j++) {
-        if (postParasArray[j] == ""){
-          postParasArray.splice(j, 1)
-        }
-        post.body = postParasArray
+    // display paragraphs text
+    let postParasArray = post.body.split("\n")
+    for (let j = 0; j < postParasArray.length; j++) {
+      if (postParasArray[j] == ""){
+        postParasArray.splice(j, 1)
       }
+      post.body = postParasArray
+    }
 
+    // check for comments authorship
     const comments = post.comments
     for (let k = 0; k < comments.length; k++) {
       if(comments[k].user.username == req.session.username){
@@ -146,8 +152,10 @@ router.get('/post/:id', async (req, res) => {
       }
     }
 
+    // check for post authorship
     const isAuthor = (post.user.username == req.session.username)
 
+    // render page
     res.render('post-display', {
       ...post,
       comments,

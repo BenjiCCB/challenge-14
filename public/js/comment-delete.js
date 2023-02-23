@@ -16,7 +16,9 @@ const deleteCommentHandler = async (event) => {
     }
   };
   
-  document
-    .querySelector('#comment-delete')
-    .addEventListener('click', deleteCommentHandler);
   
+let comments = document.querySelectorAll('.comment-delete')
+
+comments.forEach((comment) => {
+  comment.addEventListener('click', deleteCommentHandler)
+})

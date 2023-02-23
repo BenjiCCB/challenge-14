@@ -9,6 +9,7 @@
     {{#each comments as |comment|}}
     {{> comment}}
     {{/each}}
+    <script src="/js/comment-delete.js"></script>
 {{/if}}
 
 {{!-- comment submit form --}}
@@ -27,6 +28,7 @@
                 placeholder="Add your comment here"
             ></textarea>
         </div>
+        <input type="hidden" value="{{id}}" id="comment-post-id"></input>
 
         <div class="my-4">
             <button type= "submit" class="btn btn-secondary w-100 ">Submit</button>

@@ -2,10 +2,7 @@ const newCommentHandler = async (event) => {
     event.preventDefault();
   
     const comment_text = document.querySelector('#comment-text').value.trim();
-  
-    const post_id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-      ];
+    const post_id = document.querySelector('#comment-post-id').value.trim();
 
     if (comment_text && post_id) {
       const response = await fetch(`/comment-create`, {
