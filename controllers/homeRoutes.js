@@ -19,6 +19,9 @@ router.get('/', async (req, res) => {
   
     const posts = postData.map((post) => post.get({ plain: true }));
 
+    // sort posts
+    posts.sort((a, b) => b.id - a.id);
+
     // limit chars for preview
     for (let i = 0; i < posts.length; i++) { 
       if (posts[i].body.length > 2000){
@@ -61,6 +64,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
+
+    // sort posts
+    user.posts.sort((a, b) => b.id - a.id);
 
     // limit chars for preview
     for (let i = 0; i < user.posts.length; i++) { 
