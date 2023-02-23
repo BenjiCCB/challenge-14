@@ -2,7 +2,9 @@
 
 ## Description 
 
- This app is CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.  It allows users to login or sign up, view posts, manage their own posts via a dashboard, and create and view comments.  The app is built using node.js, express, sequilize, and handlebars.  It uses a MVC structure, with API endpoints for all relevant CRUD operations, and is deployed live to Heroku
+ This app is CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.  It allows users to login or sign up, view posts, manage their own posts via a dashboard, and create and view comments.  Bonus functionalities include comment count, comment deletion, paragraph text, and post sorting.
+ 
+ The app is built using node.js, express, sequilize, and handlebars.  It uses a MVC structure, with API endpoints for all relevant CRUD operations, and is deployed live to Heroku.
 
 View more info below, as well as links to the github repo and heroku deployment, and screenshots of the app in action.  
 
